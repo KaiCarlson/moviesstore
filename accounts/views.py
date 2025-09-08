@@ -40,6 +40,9 @@ def signup(request):
         if form.is_valid():
             form.save()
             return redirect('accounts.login')
+    else:
+        template_data['form'] = form
+        return render(request, 'accounts/signup.html', {'template_data' : template_data})
 @login_required
 def orders(request):
     template_data = {}
